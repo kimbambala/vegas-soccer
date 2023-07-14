@@ -1,0 +1,4 @@
+2023-07-13T21:51:27.2467591 500 : [{"timestamp":"2023-07-14T04:51:27.181+00:00","status":500,"error":"Internal Server Error","message":"User registration failed.","path":"/register"}]
+2023-07-13T21:53:37.5907609 401 : [no body]
+2023-07-13T22:06:13.1344963 500 : [{"timestamp":"2023-07-14T05:06:12.817+00:00","status":500,"error":"Internal Server Error","message":"User registration failed.","path":"/register"}]
+2023-07-13T22:12:42.7250974 503 : [no body]
