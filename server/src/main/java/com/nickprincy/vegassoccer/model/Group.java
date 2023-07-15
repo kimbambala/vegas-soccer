@@ -23,6 +23,10 @@ public class Group {
         this.additionalInfo = additionalInfo;
     }
 
+    public Group() {
+
+    }
+
     public int getGroupId() {
         return groupId;
     }
