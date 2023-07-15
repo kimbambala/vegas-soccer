@@ -2,7 +2,6 @@ package com.nickprincy.vegassoccer.controller;
 
 import javax.validation.Valid;
 
-
 import com.nickprincy.vegassoccer.exception.DaoException;
 import com.nickprincy.vegassoccer.model.LoginResponseDto;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,6 @@ import com.nickprincy.vegassoccer.model.LoginDto;
 import com.nickprincy.vegassoccer.model.RegisterUserDto;
 import com.nickprincy.vegassoccer.model.User;
 import com.nickprincy.vegassoccer.security.jwt.TokenProvider;
-
 import org.springframework.web.server.ResponseStatusException;
 
 /**

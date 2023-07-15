@@ -3,7 +3,6 @@ package com.nickprincy.vegassoccer.controller;
 import com.nickprincy.vegassoccer.dao.GroupDao;
 import com.nickprincy.vegassoccer.exception.DaoException;
 import com.nickprincy.vegassoccer.model.Group;
-import com.nickprincy.vegassoccer.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -45,7 +44,7 @@ public class GroupController {
 
     }
 
-    @RequestMapping(path = "/groups/user/{userId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/groups/users/{userId}", method = RequestMethod.GET)
     public Group getGroupByUserId(@PathVariable int userId){
         Group group = groupDao.getGroupByUserId(userId);
         if (group == null){
@@ -58,7 +57,7 @@ public class GroupController {
 
     @RequestMapping(path = "/groups", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void getCreateGroup(@RequestBody Group newGroup){
+    public void createGroup(@RequestBody Group newGroup){
         try {
             Group group = groupDao.createGroup(newGroup);
             if (group == null) {
