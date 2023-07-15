@@ -2,6 +2,7 @@ package com.nickprincy.vegassoccer.dao;
 
 import com.nickprincy.vegassoccer.exception.DaoException;
 import com.nickprincy.vegassoccer.model.Group;
+import com.nickprincy.vegassoccer.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -75,19 +76,18 @@ public class JdbcGroupDao implements GroupDao{
     public Group createGroup(Group group) {
         Group newGroup = null;
         String sql = "INSERT INTO groups(user_id, group_name, game_day, start_time, game_type, location, address, additional_info) " +
-                "VALUES(?, ?, ?, ?, ?, ?, ?) RETURNING group_id;";
+                "VALUES(?, ?, ?, ?, ?, ?, ?) RETURNING group_id";
 
         try{
 
-            int newGroupId = jdbcTemplate.update(sql);
-
+            int newGroupId = jdbcTemplate.update(sql, int.class, group.getUserId(), group.getGroupName(), group.getGameDay(), group.getStartTime(),
+                    group.getGameType(), group.getLocation(), group.getAddress(), group.getAdditionalInfo());
             newGroup = getGroupById(newGroupId);
         } catch (CannotGetJdbcConnectionException e){
             throw new DaoException("Unable to connect to server or Database", e);
         } catch (DataIntegrityViolationException e){
             throw  new DaoException("Data integrity violation", e);
         }
-
 
         return newGroup;
     }
@@ -97,13 +97,19 @@ public class JdbcGroupDao implements GroupDao{
         List<Group> groupList = new ArrayList<>();
 
         String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = ?";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
-
-        while (result.next()){
-            Group group = mapRowToGroup(result);
-            groupList.add(group);
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
         }
+
 
         return groupList;
     }

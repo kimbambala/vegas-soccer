@@ -5,7 +5,7 @@ import com.nickprincy.vegassoccer.model.Group;
 import java.util.List;
 
 public interface GroupDao {
-    Group createGroup(Group group);
+    Group createGroup(Group newGroup);
 
     Group getGroupById(int groupId);
 
