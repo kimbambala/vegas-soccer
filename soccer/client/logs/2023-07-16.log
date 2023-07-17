@@ -1,0 +1,1 @@
+2023-07-16T19:35:29.4561343 415 : [{"timestamp":"2023-07-17T02:35:29.316+00:00","status":415,"error":"Unsupported Media Type","message":"Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported","path":"/groups/"}]
