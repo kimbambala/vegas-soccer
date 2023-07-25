@@ -73,47 +73,6 @@ public class ConsoleService {
     public Group promptForGroupData() {
         Group newgroup= new Group();
 
-        String groupName = "";
-        while (groupName.isBlank()) {
-            groupName = promptForString("What is your group name?: ");
-        }
-        newgroup.setGroupName(groupName);
-
-        String gameDay = "";
-        while (gameDay.isBlank()) {
-            gameDay= promptForString("On which day of the week you play?: ");
-        }
-        newgroup.setGameDay(gameDay);
-
-        String startTime = "";
-        while (startTime.isBlank()) {
-            startTime = promptForString("What time do you start playing?:  ");
-        }
-        newgroup.setStartTime(startTime);
-
-        String gameType = "";
-        while (gameType.isBlank()) {
-            gameType = promptForString("Does your group play Indoor or Outdoor?:  ");
-        }
-        newgroup.setGameType(gameType);
-
-
-        String location = "";
-        while (location.isBlank()) {
-            location = promptForString("Where does your group play:  ");
-        }
-        newgroup.setLocation(location);
-
-        String address = "";
-        while (address.isBlank()) {
-            address = promptForString("What is the address of the location you play?:  ");
-        }
-        newgroup.setAddress(address);
-
-        String additionalInfo = "";
-        additionalInfo = promptForString("Any additional information?:  ");
-
-        newgroup.setAdditionalInfo(additionalInfo);
 
         return newgroup;
     }

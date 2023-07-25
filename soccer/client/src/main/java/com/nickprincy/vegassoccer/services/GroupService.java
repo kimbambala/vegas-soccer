@@ -2,11 +2,8 @@ package com.nickprincy.vegassoccer.services;
 
 import com.nickprincy.util.BasicLogger;
 import com.nickprincy.vegassoccer.model.Group;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+import org.springframework.http.*;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestClientResponseException;
@@ -57,17 +54,18 @@ public class GroupService {
         }
         return group;
     }
-    public Group ceateGroup(){
-        Group newGroup = new Group();
+    public Group createGroup(Group newGroup){
+        HttpEntity<Group> entity = makeGroupEntity(newGroup);
+
+        Group returnedGroup = null;
 
         try{
-            ResponseEntity<Group> response = restTemplate.exchange(API_BASE_URL + "groups/", HttpMethod.POST, makeAuthEntity(), Group.class);
-            newGroup = response.getBody();
+            returnedGroup = restTemplate.exchange(API_BASE_URL + "groups", HttpMethod.POST, entity, Group.class).getBody();
         }catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
 
-        return newGroup;
+        return returnedGroup;
     }
 
     public Group[] getGroupsByGameDay(String gameDay){
@@ -91,4 +89,13 @@ public class GroupService {
         headers.setBearerAuth(authToken);
         return new HttpEntity<>(headers);
     }
+
+    private HttpEntity<Group> makeGroupEntity(Group group) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(authToken);
+        return new HttpEntity<>(group, headers);
+    }
+
+
 }

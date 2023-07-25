@@ -62,7 +62,7 @@ public class App {
 			menuSelection = consoleService.promptForMenuSelection("Please choose an option: ");
 			if (menuSelection == 1) {
 				viewAllGroups();
-			} else if (menuSelection == 2) {
+			}else if (menuSelection == 2) {
 				mondayGroups("Monday");
 			}else if (menuSelection == 3) {
 				tuesdayGroups("Tuesday");
@@ -158,16 +158,74 @@ public class App {
 		return groups;
 	}
 
+
 	private void createGroup() {
+
+		Group newgroup = new Group();
+
+		int userId = currentUser.getUser().getId();
+		int groupId = newgroup.getGroupId();
+
 		System.out.println("Please register your pickup group");
 		//UserCredentials credentials = consoleService.promptForCredentials();
-		Group group = consoleService.promptForGroupData();
-		groupService.ceateGroup();
-		System.out.println("Registration successful.");
+
+		String groupName = "";
+		while (groupName.isBlank()) {
+			groupName = consoleService.promptForString("What is your group name?: ");
+		}
+		newgroup.setGroupName(groupName);
+
+		String gameDay = "";
+		while (gameDay.isBlank()) {
+			gameDay= consoleService.promptForString("On which day of the week you play?: ");
+		}
+		newgroup.setGameDay(gameDay);
+
+		String startTime = "";
+		while (startTime.isBlank()) {
+			startTime = consoleService.promptForString("What time do you start playing?:  ");
+		}
+		newgroup.setStartTime(startTime);
+
+		String gameType = "";
+		while (gameType.isBlank()) {
+			gameType = consoleService.promptForString("Does your group play Indoor or Outdoor?:  ");
+		}
+		newgroup.setGameType(gameType);
+
+
+		String location = "";
+		while (location.isBlank()) {
+			location = consoleService.promptForString("Where does your group play:  ");
+		}
+		newgroup.setLocation(location);
+
+		String address = "";
+		while (address.isBlank()) {
+			address = consoleService.promptForString("What is the address of the location you play?:  ");
+		}
+		newgroup.setAddress(address);
+
+		String additionalInfo = "";
+		additionalInfo = consoleService.promptForString("Any additional information?:  ");
+
+		newgroup.setAdditionalInfo(additionalInfo);
+
+
+		Group group = new Group(groupId, userId, groupName, gameDay, startTime, gameType, location, address, additionalInfo);
+		Group groupFromApi = groupService.createGroup(group);
+
+
+		/*if(groupFromApi == null){
+			consoleService.printErrorMessage();
+		}else{
+			System.out.println("Your group registration was successful");
+		}
 			/*System.out.println("Registration successful. You can now login.");
 		} else {
 			consoleService.printErrorMessage();
 		}*/
+		//System.out.println("Your group registration was successful");
 
 	}
 

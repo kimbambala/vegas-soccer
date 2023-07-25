@@ -27,7 +27,7 @@ public class JdbcGroupDao implements GroupDao{
         String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE group_id = ?";
 
         try{
-            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql, groupId);
             if(result.next()){
                 group = mapRowToGroup(result);
             }
@@ -80,7 +80,7 @@ public class JdbcGroupDao implements GroupDao{
 
         try{
 
-            int newGroupId = jdbcTemplate.update(sql, int.class, group.getUserId(), group.getGroupName(), group.getGameDay(), group.getStartTime(),
+            int newGroupId = jdbcTemplate.queryForObject(sql, int.class, group.getUserId(), group.getGroupName(), group.getGameDay(), group.getStartTime(),
                     group.getGameType(), group.getLocation(), group.getAddress(), group.getAdditionalInfo());
             newGroup = getGroupById(newGroupId);
         } catch (CannotGetJdbcConnectionException e){
