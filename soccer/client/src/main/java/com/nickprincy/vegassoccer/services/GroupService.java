@@ -82,6 +82,90 @@ public class GroupService {
 
     }
 
+    public Group[] getGroupsByTuesday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/tuesday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
+    public Group[] getGroupsByWednesday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/wednesday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
+    public Group[] getGroupsByThursday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/thursday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
+    public Group[] getGroupsByFriday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/friday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
+    public Group[] getGroupsBySaturday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/saturday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
+    public Group[] getGroupsBySunday(){
+        Group[] groups = new Group[0];
+
+        try{
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/sunday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
+            groups = response.getBody();
+        }catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return groups;
+
+    }
+
 
 
     private HttpEntity<Void> makeAuthEntity() {

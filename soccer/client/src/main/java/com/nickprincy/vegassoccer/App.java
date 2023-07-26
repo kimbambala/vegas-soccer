@@ -65,17 +65,17 @@ public class App {
 			}else if (menuSelection == 2) {
 				mondayGroups();
 			}else if (menuSelection == 3) {
-				tuesdayGroups("Tuesday");
+				tuesdayGroups();
 			}else if (menuSelection == 4) {
-				wednesdayGroups("Wednesday");
+				wednesdayGroups();
 			}else if (menuSelection == 5) {
-				thursdayGroups("Thursday");
+				thursdayGroups();
 			}else if (menuSelection == 6) {
-				fridayGroups("Friday");
+				fridayGroups();
 			}else if (menuSelection == 7) {
-				saturdayGroups("Saturday");
+				saturdayGroups();
 			}else if (menuSelection == 8) {
-				sundayGroups("Sunday");
+				sundayGroups();
 			}else if (menuSelection == 9) {
 				loginMenu();
 			}else if (menuSelection != 0) {
@@ -121,7 +121,7 @@ public class App {
 		List<Group> groupList = Arrays.asList(groupService.getGroups());
 		//String groupName = groupList.get(0).getGroupName();
 		System.out.println("*******************************************************");
-		System.out.println("*                       Groups                        *");
+		System.out.println("*                      All Groups                     *");
 		for (Group group: groupList) {
 			System.out.println("-------------------------------------------------------");
 			System.out.println("Group Name: " + group.getGroupName());
@@ -142,6 +142,9 @@ public class App {
 	private void mondayGroups(){
 		List<Group> groupList = Arrays.asList(groupService.getGroupsByMonday());
 
+		System.out.println("*******************************************************");
+		System.out.println("*                      Monday                         *");
+
 		for (Group group : groupList) {
 
 			System.out.println("-------------------------------------------------------");
@@ -154,37 +157,136 @@ public class App {
 			System.out.println("Additional info: " + group.getAdditionalInfo());
 			System.out.println("-------------------------------------------------------");
 		}
+		System.out.println("********************************************************");
+
 
 	}
 
-	private Group[] tuesdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void tuesdayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsByTuesday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Tuesday                        *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
 	}
 
-	private Group[] wednesdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void wednesdayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsByWednesday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Wednesday                      *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
+
 	}
 
-	private Group[] thursdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void thursdayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsByThursday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Thursday                       *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
 	}
 
-	private Group[] fridayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void fridayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsByFriday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Friday                         *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
 	}
 
-	private Group[] saturdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void saturdayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsBySaturday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Saturday                       *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
 	}
 
-	private Group[] sundayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByMonday();
-		return groups;
+	private void sundayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsBySunday());
+
+		System.out.println("*******************************************************");
+		System.out.println("*                      Sunday                         *");
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
 	}
 
 
@@ -242,18 +344,6 @@ public class App {
 
 		Group group = new Group(groupId, userId, groupName, gameDay, startTime, gameType, location, address, additionalInfo);
 		groupService.createGroup(group);
-
-
-		/*if(groupFromApi == null){
-			System.out.println("Unable to register group");
-		}else{
-			System.out.println("Your group registration was successful");
-		}
-			System.out.println("Registration successful. You can now login.");
-		} else {
-			consoleService.printErrorMessage();
-		}*/
-		//System.out.println("Your group registration was successful");
 
 	}
 

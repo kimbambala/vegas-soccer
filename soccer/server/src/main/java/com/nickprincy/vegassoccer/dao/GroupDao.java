@@ -14,4 +14,10 @@ public interface GroupDao {
     Group getGroupByUserId (int userId);
 
     List<Group> getGroupsByMonday();
+    List<Group> getGroupsByTuesday();
+    List<Group> getGroupsByWednesday();
+    List<Group> getGroupsByThursday();
+    List<Group> getGroupsByFriday();
+    List<Group> getGroupsBySaturday();
+    List<Group> getGroupsBySunday();
 }

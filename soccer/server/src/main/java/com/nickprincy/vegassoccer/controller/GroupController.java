@@ -88,5 +88,77 @@ public class GroupController{
 
     }
 
+    @GetMapping("/tuesday")
+    public List<Group> getGroupsByTuesday(){
+        List<Group> mondayGroups = groupDao.getGroupsByTuesday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
+    @GetMapping("/wednesday")
+    public List<Group> getGroupsByWednesday(){
+        List<Group> mondayGroups = groupDao.getGroupsByWednesday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
+    @GetMapping("/thursday")
+    public List<Group> getGroupsByThursday(){
+        List<Group> mondayGroups = groupDao.getGroupsByThursday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
+    @GetMapping("/friday")
+    public List<Group> getGroupsByFriday(){
+        List<Group> mondayGroups = groupDao.getGroupsByFriday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
+    @GetMapping("/saturday")
+    public List<Group> getGroupsBySaturday(){
+        List<Group> mondayGroups = groupDao.getGroupsBySaturday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
+    @GetMapping("/sunday")
+    public List<Group> getGroupsBySunday(){
+        List<Group> mondayGroups = groupDao.getGroupsBySunday();
+        if (mondayGroups == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
+        }else {
+            return mondayGroups;
+        }
+
+
+    }
+
 
 }

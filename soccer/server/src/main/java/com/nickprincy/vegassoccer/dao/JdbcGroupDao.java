@@ -112,6 +112,131 @@ public class JdbcGroupDao implements GroupDao{
 
         return groupList;
     }
+    @Override
+    public List<Group> getGroupsByTuesday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Tuesday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
+
+    @Override
+    public List<Group> getGroupsByWednesday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Wednesday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
+
+    @Override
+    public List<Group> getGroupsByThursday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Thursday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
+
+    @Override
+    public List<Group> getGroupsByFriday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Friday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
+
+    @Override
+    public List<Group> getGroupsBySaturday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Saturday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
+
+    @Override
+    public List<Group> getGroupsBySunday() {
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Sunday' ";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+            while (result.next()){
+                Group group = mapRowToGroup(result);
+                groupList.add(group);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or Database", e);
+        } catch (DataIntegrityViolationException e){
+            throw  new DaoException("Data integrity violation", e);
+        }
+
+        return groupList;
+    }
 
     private Group mapRowToGroup(SqlRowSet rowSet){
         Group group = new Group();
