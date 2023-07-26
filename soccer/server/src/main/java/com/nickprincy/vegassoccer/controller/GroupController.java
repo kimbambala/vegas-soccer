@@ -76,13 +76,13 @@ public class GroupController{
     }
 
 
-    @GetMapping("/day/{gameDay}")
-    public List<Group> getGroupsByGameDay(@PathVariable String gameDay){
-            List<Group> groupGameDay = groupDao.getGroupsByGameDay(gameDay);
-            if (groupGameDay == null) {
+    @GetMapping("/monday")
+    public List<Group> getGroupsByMonday(){
+            List<Group> mondayGroups = groupDao.getGroupsByMonday();
+            if (mondayGroups == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickup games for this day.");
             }else {
-                return groupGameDay;
+                return mondayGroups;
             }
 
 

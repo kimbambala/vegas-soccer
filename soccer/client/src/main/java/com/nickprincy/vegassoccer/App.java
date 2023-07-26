@@ -63,7 +63,7 @@ public class App {
 			if (menuSelection == 1) {
 				viewAllGroups();
 			}else if (menuSelection == 2) {
-				mondayGroups("Monday");
+				mondayGroups();
 			}else if (menuSelection == 3) {
 				tuesdayGroups("Tuesday");
 			}else if (menuSelection == 4) {
@@ -117,44 +117,73 @@ public class App {
 		}
 	}
 
-	private List<Group> viewAllGroups(){
+	private void viewAllGroups(){
 		List<Group> groupList = Arrays.asList(groupService.getGroups());
-		return groupList;
+		//String groupName = groupList.get(0).getGroupName();
+		System.out.println("*******************************************************");
+		System.out.println("*                       Groups                        *");
+		for (Group group: groupList) {
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+		System.out.println("********************************************************");
+
+
 
 	}
 
-	private Group[] mondayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay(gameDay);
-		return groups;
+	private void mondayGroups(){
+		List<Group> groupList = Arrays.asList(groupService.getGroupsByMonday());
+
+		for (Group group : groupList) {
+
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Group Name: " + group.getGroupName());
+			System.out.println("Day: " + group.getGameDay());
+			System.out.println("Start Time: " + group.getStartTime());
+			System.out.println("Game Type: " + group.getGameType());
+			System.out.println("Location: " + group.getLocation());
+			System.out.println("Address: " + group.getAddress());
+			System.out.println("Additional info: " + group.getAdditionalInfo());
+			System.out.println("-------------------------------------------------------");
+		}
+
 	}
 
 	private Group[] tuesdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Tuesday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
 	private Group[] wednesdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Wednesday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
 	private Group[] thursdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Thursday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
 	private Group[] fridayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Friday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
 	private Group[] saturdayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Saturday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
 	private Group[] sundayGroups(String gameDay){
-		Group[] groups = groupService.getGroupsByGameDay("Sunday");
+		Group[] groups = groupService.getGroupsByMonday();
 		return groups;
 	}
 
@@ -167,7 +196,6 @@ public class App {
 		int groupId = newgroup.getGroupId();
 
 		System.out.println("Please register your pickup group");
-		//UserCredentials credentials = consoleService.promptForCredentials();
 
 		String groupName = "";
 		while (groupName.isBlank()) {
@@ -213,15 +241,15 @@ public class App {
 
 
 		Group group = new Group(groupId, userId, groupName, gameDay, startTime, gameType, location, address, additionalInfo);
-		Group groupFromApi = groupService.createGroup(group);
+		groupService.createGroup(group);
 
 
 		/*if(groupFromApi == null){
-			consoleService.printErrorMessage();
+			System.out.println("Unable to register group");
 		}else{
 			System.out.println("Your group registration was successful");
 		}
-			/*System.out.println("Registration successful. You can now login.");
+			System.out.println("Registration successful. You can now login.");
 		} else {
 			consoleService.printErrorMessage();
 		}*/
@@ -246,8 +274,6 @@ public class App {
 			consoleService.pause();
 		}
 	}
-
-
 
 
 

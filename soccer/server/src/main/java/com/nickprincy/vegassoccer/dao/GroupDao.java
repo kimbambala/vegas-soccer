@@ -13,5 +13,5 @@ public interface GroupDao {
 
     Group getGroupByUserId (int userId);
 
-    List<Group> getGroupsByGameDay(String gameDay);
+    List<Group> getGroupsByMonday();
 }

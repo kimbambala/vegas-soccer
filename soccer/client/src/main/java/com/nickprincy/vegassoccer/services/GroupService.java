@@ -68,11 +68,11 @@ public class GroupService {
         return returnedGroup;
     }
 
-    public Group[] getGroupsByGameDay(String gameDay){
+    public Group[] getGroupsByMonday(){
         Group[] groups = new Group[0];
 
         try{
-            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/" + "day/" + gameDay, HttpMethod.GET, makeAuthEntity(), Group[].class);
+            ResponseEntity<Group[]> response = restTemplate.exchange(API_BASE_URL + "groups/monday" , HttpMethod.GET, makeAuthEntity(), Group[].class);
             groups = response.getBody();
         }catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());

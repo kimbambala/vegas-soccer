@@ -93,10 +93,10 @@ public class JdbcGroupDao implements GroupDao{
     }
 
     @Override
-    public List<Group> getGroupsByGameDay(String gameDay) {
+    public List<Group> getGroupsByMonday() {
         List<Group> groupList = new ArrayList<>();
 
-        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = ?";
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE game_day = 'Monday' ";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 
@@ -109,7 +109,6 @@ public class JdbcGroupDao implements GroupDao{
         } catch (DataIntegrityViolationException e){
             throw  new DaoException("Data integrity violation", e);
         }
-
 
         return groupList;
     }
