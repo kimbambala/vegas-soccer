@@ -4,16 +4,16 @@ import javax.validation.Valid;
 
 import com.nickprincy.vegassoccer.exception.DaoException;
 import com.nickprincy.vegassoccer.model.LoginResponseDto;
+import com.nickprincy.vegassoccer.security.jwt.JWTFilter;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.nickprincy.vegassoccer.dao.UserDao;
@@ -27,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
  * Controller to authenticate users.
  */
 @RestController
+@CrossOrigin
 public class AuthenticationController {
 
     private final TokenProvider tokenProvider;
@@ -39,8 +40,8 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public LoginResponseDto login(@Valid @RequestBody LoginDto loginDto) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
@@ -49,26 +50,21 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.createToken(authentication, false);
 
-        User user;
-        try {
-            user = userDao.getUserByUsername(loginDto.getUsername());
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
-        }
+        User user = userDao.findByUsername(loginDto.getUsername());
 
-        return new LoginResponseDto(jwt, user);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+        return new ResponseEntity<>(new LoginResponseDto(jwt, user), httpHeaders, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDto newUser) {
         try {
-            User user = userDao.createUser(newUser);
-            if (user == null) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
-            }
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
+            User user = userDao.findByUsername(newUser.getUsername());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Already Exists.");
+        } catch (UsernameNotFoundException e) {
+            userDao.create(newUser.getUsername().toLowerCase(),newUser.getPassword(), newUser.getRole());
         }
     }
 

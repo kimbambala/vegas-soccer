@@ -3,17 +3,19 @@
 BEGIN;
 
 
-DROP TABLE IF EXISTS public.groups;
+CREATE TABLE IF NOT EXISTS public.users
+(
+    user_id integer NOT NULL DEFAULT nextval('seq_user_id'::regclass),
+    username character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    password_hash character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    role character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT users_pkey PRIMARY KEY (user_id),
+    CONSTRAINT uq_username UNIQUE (username)
+);
 
-
-CREATE SEQUENCE seq_group_id
-  INCREMENT BY 1
-  START WITH 2001
-  NO MAXVALUE;
-  
 CREATE TABLE IF NOT EXISTS public.groups
 (
-    group_id integer NOT NULL DEFAULT nextval('seq_group_id'),
+    group_id integer NOT NULL DEFAULT nextval('seq_group_id'::regclass),
     user_id integer NOT NULL,
     group_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     game_day character varying(20) COLLATE pg_catalog."default" NOT NULL,
@@ -23,23 +25,6 @@ CREATE TABLE IF NOT EXISTS public.groups
     address character varying(100) COLLATE pg_catalog."default" NOT NULL,
     additional_info character varying(200) COLLATE pg_catalog."default",
     CONSTRAINT groups_pkey PRIMARY KEY (group_id)
-);
-
-DROP TABLE IF EXISTS public.users;
-
-
-CREATE SEQUENCE seq_user_id
-  INCREMENT BY 1
-  START WITH 1001
-  NO MAXVALUE;
-  
-CREATE TABLE IF NOT EXISTS public.users
-(
-    user_id integer NOT NULL DEFAULT nextval('seq_user_id'),
-    username character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    password_hash character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT users_pkey PRIMARY KEY (user_id),
-    CONSTRAINT uq_username UNIQUE (username)
 );
 
 ALTER TABLE IF EXISTS public.groups

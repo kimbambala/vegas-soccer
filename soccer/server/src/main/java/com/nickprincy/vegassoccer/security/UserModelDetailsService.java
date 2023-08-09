@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Authenticate a user from the database.
@@ -33,20 +34,16 @@ public class UserModelDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String login) {
         log.debug("Authenticating user '{}'", login);
         String lowercaseLogin = login.toLowerCase();
-        return createSpringSecurityUser(lowercaseLogin, userDao.getUserByUsername(lowercaseLogin));
+        return createSpringSecurityUser(lowercaseLogin, userDao.findByUsername(lowercaseLogin));
     }
 
     private org.springframework.security.core.userdetails.User createSpringSecurityUser(String lowercaseLogin, User user) {
         if (!user.isActivated()) {
             throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
         }
-
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        Set<Authority> userAuthorities = user.getAuthorities();
-        for (Authority authority : userAuthorities) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
-        }
-
+        List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getName()))
+                .collect(Collectors.toList());
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 grantedAuthorities);

@@ -8,11 +8,13 @@ import java.util.List;
 
 public interface UserDao {
 
-    List<User> getUsers();
+    List<User> findAll();
 
-    User getUserById(int id);
+    User getUserById(int userId);
 
-    User getUserByUsername(String username);
+    User findByUsername(String username);
 
-    User createUser(RegisterUserDto user);
+    int findIdByUsername(String username);
+
+    boolean create(String username, String password, String role);
 }
