@@ -4,9 +4,12 @@ import com.nickprincy.vegassoccer.dao.GroupDao;
 import com.nickprincy.vegassoccer.exception.DaoException;
 import com.nickprincy.vegassoccer.model.Group;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -49,24 +52,26 @@ public class GroupController{
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/users/{userId}")
-    public Group getGroupByUserId(@PathVariable int userId){
-        Group group = groupDao.getGroupByUserId(userId);
-        if (group == null){
+    public List<Group> getGroupsByUserId(@PathVariable int userId){
+        List<Group> groupList = groupDao.getGroupsByUserId(userId);
+        if (groupList == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No group matches this user Id");
         }else{
-            return group;
+            return groupList;
         }
 
     }
 
 
-
+    @PreAuthorize("isAuthenticated()")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createGroup(@RequestBody Group newGroup){
+    public void createGroup(@RequestBody Group newGroup, Principal principal){
         try {
-            Group group = groupDao.createGroup(newGroup);
+            String username = principal.getName();
+            Group group = groupDao.createGroup(newGroup, username);
             if (group == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Group registration failed.");
             }

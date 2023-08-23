@@ -15,20 +15,28 @@
             </li>
             <li>
 
-                <router-link v-bind:to="{ name: 'tuesday' }"><p>Wednesday</p></router-link>
+                <router-link v-bind:to="{ name: 'wednesday' }"><p>Wednesday</p></router-link>
 
             </li>
             <li>
-                <a class="thursday-groups" href="thursday.html"><p>Thursday</p></a>
+                
+                <router-link v-bind:to="{ name: 'thursday' }"><p>Thursday</p></router-link>
+
+
             </li>
             <li>
-                <a class="friday-groups" href="friday.html"><p>Friday</p></a>
+
+                <router-link v-bind:to="{ name: 'friday' }"><p>Friday</p></router-link>
+
             </li>
             <li>
-                <a class="saturday-groups" href="saturday.html"><p>Saturday</p></a>
+
+                <router-link v-bind:to="{ name: 'saturday' }"><p>Saturday</p></router-link>
+
             </li>
             <li>
-                <a class="sunday-groups" href="sunday.html"><p>Sunday</p></a>
+                <router-link v-bind:to="{ name: 'sunday' }"><p>Sunday</p></router-link>
+
             </li>
         </ul>
     </div>

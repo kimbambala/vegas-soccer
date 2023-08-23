@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 public class GroupService {
-    private final String API_BASE_URL = "http://localhost:8080/";
+    private final String API_BASE_URL = "http://localhost:9000/";
     private final RestTemplate restTemplate = new RestTemplate();
     private String authToken = null;
 

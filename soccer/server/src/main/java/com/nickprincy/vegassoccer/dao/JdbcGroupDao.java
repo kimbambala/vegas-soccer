@@ -14,9 +14,11 @@ import java.util.List;
 public class JdbcGroupDao implements GroupDao{
 
     private final JdbcTemplate jdbcTemplate;
+    private final UserDao userDao;
 
-    public JdbcGroupDao(JdbcTemplate jdbcTemplate) {
+    public JdbcGroupDao(JdbcTemplate jdbcTemplate, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
 
@@ -55,32 +57,37 @@ public class JdbcGroupDao implements GroupDao{
     }
 
     @Override
-    public Group getGroupByUserId(int userId) {
-        Group group = null;
+    public List<Group> getGroupsByUserId(int userId) {
 
-        String sql = "SELECT account_id, user_id, balance FROM account WHERE user_id = ?";
+        List<Group> groupList = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info FROM groups WHERE user_id = ?";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-            if(results.next()){
-                group = mapRowToGroup(results);
+            while(results.next()){
+                Group group = mapRowToGroup(results);
+                groupList.add(group);
             }
         }catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server / database");
         }
-        return  group;
+        return  groupList;
     }
 
 
     @Override
-    public Group createGroup(Group group) {
+    public Group createGroup(Group group, String username) {
         Group newGroup = null;
+
+        int userId = userDao.findIdByUsername(username);
+
         String sql = "INSERT INTO groups(user_id, group_name, game_day, start_time, game_type, location, address, additional_info) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?) RETURNING group_id";
 
         try{
 
-            int newGroupId = jdbcTemplate.queryForObject(sql, int.class, group.getUserId(), group.getGroupName(), group.getGameDay(), group.getStartTime(),
+            int newGroupId = jdbcTemplate.queryForObject(sql, int.class, userId, group.getGroupName(), group.getGameDay(), group.getStartTime(),
                     group.getGameType(), group.getLocation(), group.getAddress(), group.getAdditionalInfo());
             newGroup = getGroupById(newGroupId);
         } catch (CannotGetJdbcConnectionException e){

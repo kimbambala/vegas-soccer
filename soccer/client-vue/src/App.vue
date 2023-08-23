@@ -13,4 +13,9 @@
 </template>
 <style>
 
+#app{
+  background-color: #f1f1f1; 
+
+}
+
 </style>

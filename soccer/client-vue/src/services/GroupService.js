@@ -28,7 +28,19 @@ export default {
 
   getSundayGroups(){
     return axios.get('/groups/sunday/')
+  },
+
+  createGroup(group){
+    return axios.post("/groups/", group)
+
+  },
+
+  getGroupsByUserId(userId){
+    return axios.get("/groups/users/" + userId)
   }
+
+
+
 
 
 

@@ -8,6 +8,13 @@ import store from '../store/index'
 import Monday from "../views/Monday.vue"
 import Tuesday from "../views/Tuesday.vue"
 import Wednesday from "../views/Wednesday.vue"
+import Thursday from "../views/Thursday.vue"
+import Friday from "../views/Friday.vue"
+import Saturday from "../views/Saturday.vue"
+import Sunday from "../views/Sunday.vue"
+import Profile from "../views/Profile.vue"
+import Confirmation from "../views/Confirmation.vue"
+import MyGroups from "../views/MyGroups"
 
 Vue.use(Router)
 
@@ -34,7 +41,7 @@ const router = new Router({
     },
 
     {
-      path: '/monday',
+      path: '/groups/monday',
       name: 'monday',
       component: Monday,
       meta: {
@@ -42,9 +49,8 @@ const router = new Router({
       }
     },
 
-
     {
-      path: '/tuesday',
+      path: '/groups/tuesday',
       name: 'tuesday',
       component: Tuesday,
       meta: {
@@ -53,9 +59,72 @@ const router = new Router({
     },
 
     {
-      path: '/wednesday',
+      path: '/groups/wednesday/',
       name: 'wednesday',
       component: Wednesday,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/groups/thursday/',
+      name: 'thursday',
+      component: Thursday,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/groups/friday/',
+      name: 'friday',
+      component: Friday,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/groups/saturday/',
+      name: 'saturday',
+      component: Saturday,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/groups/users/:userId',
+      name: 'mygroups',
+      component: MyGroups,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/profile/:userId",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/profile/:userId/:groupId",
+      name: "Confirmation",
+      component: Confirmation,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: '/groups/sunday/',
+      name: 'sunday',
+      component: Sunday,
       meta: {
         requiresAuth: false
       }

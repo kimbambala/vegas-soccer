@@ -42,7 +42,7 @@
    
   }
   .tuesday-card{
-    grid-area: monday-card;
+    grid-area: tuesday-card;
     background-color: rgb(211, 231, 239);
     box-shadow: inset 0px 5px 5px 0px rgb(175, 166, 166);
   }

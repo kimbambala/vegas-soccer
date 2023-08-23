@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UserService {
-    private static final String API_BASE_URL = "http://localhost:8080/";
+    private static final String API_BASE_URL = "http://localhost:9000/";
     private final RestTemplate restTemplate = new RestTemplate();
     private String authToken = null;
 

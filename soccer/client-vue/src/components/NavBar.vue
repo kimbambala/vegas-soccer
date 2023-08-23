@@ -16,11 +16,19 @@
                   <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
                       
-                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'login' }">Login</router-link>
+                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
                     </li>
                     <li class="nav-item">                   
 
-                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'register' }">Register</router-link>
+                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
+                    </li>
+
+                    <li class="nav-item">                   
+                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'profile', params:{userId: this.$store.state.user.id}}" v-if="$store.state.token != ''">My profile</router-link>
+                    </li>
+
+                    <li class="nav-item">                   
+                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'mygroups', params:{userId:1} }" v-if="$store.state.token != ''">My groups</router-link>
                     </li>
 
                     <li class="nav-item">                   
@@ -28,7 +36,7 @@
                     </li>
 
                   </ul>
-                </div>
+                </div> 
               </div>
             </div>
         </nav>
