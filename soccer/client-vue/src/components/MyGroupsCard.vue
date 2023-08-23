@@ -29,8 +29,10 @@
                     <router-link v-bind:to="{ name: 'home' }" > Add</router-link>
                   </button>
                 </td> 
-                <td>Edit Group</td>
-                <td class="delete-itinerary"> <button type="submit" value="Delete" >Delete</button></td>             
+                <td> 
+                  <button v-on:click="editGroup(group.groupId)">Edit Group</button>
+                </td>
+                <td class="delete-itinerary"> <button type="submit" value="Delete" v-on:click="deleteGroup(group.groupId)">Delete</button></td>             
             </tr>
         </tbody>
       </table>
@@ -62,6 +64,28 @@
             console.log(response.data);
 
         })
+    },
+    methods: {
+      deleteGroup(groupId){
+        GroupService.deleteGroup(groupId).then(()=>{
+          const index = this.groups.findIndex(i => i.groupId == groupId)
+          this.groups.splice(index, 1)
+        })
+      },
+
+      editGroup(group){
+        GroupService.editGroup(group).then((response)=>{
+          const userId = response.data.userId;
+          const route = {
+            name: "confirmation",
+            params: {
+              userId : userId
+            }
+          };
+          this.$route.push(route)
+        })
+      }
+
     }           
   
 }

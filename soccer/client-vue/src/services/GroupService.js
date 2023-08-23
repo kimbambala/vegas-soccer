@@ -37,9 +37,15 @@ export default {
 
   getGroupsByUserId(userId){
     return axios.get("/groups/users/" + userId)
+  },
+
+  deleteGroup(groupId){
+    return axios.delete("/groups/" + groupId)
+  },
+
+  editGroup(group){
+    return axios.put("groups/" + group.groupId, group)
   }
-
-
 
 
 
