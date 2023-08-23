@@ -100,6 +100,21 @@ public class JdbcGroupDao implements GroupDao{
     }
 
     @Override
+    public void deleteGroup(int groupId){
+        String sql = "DELETE FROM groups WHERE group_id = ?;";
+
+        jdbcTemplate.update(sql, groupId);
+    }
+
+    @Override
+    public void editGroup(int groupId, Group group){
+        String sql = "UPDATE groups SET group_name = ?, game_day = ?, start_time = ?, game_type = ?, location = ?, address = ?, additional_info = ?\n" +
+                "WHERE group_id = ?;";
+
+        jdbcTemplate.update(sql, group.getGroupName(), group.getGameDay(), group.getStartTime(), group.getGameType(), group.getLocation(), group.getAddress(), group.getAdditionalInfo(), groupId);
+    }
+
+    @Override
     public List<Group> getGroupsByMonday() {
         List<Group> groupList = new ArrayList<>();
 

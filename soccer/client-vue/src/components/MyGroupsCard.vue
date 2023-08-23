@@ -1,5 +1,5 @@
 <template>
-    <div class="main-card">
+    <div class="main-card">  
       <table class="table">
         <thead class="thead">
           <tr class="td">

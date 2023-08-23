@@ -81,6 +81,19 @@ public class GroupController{
 
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{groupId}")
+    public void deleteGroup(@PathVariable int groupId){
+        groupDao.deleteGroup(groupId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("/{groupId}")
+    public void editGroup(@PathVariable int groupId, @RequestBody Group updatedGroup){
+        groupDao.editGroup(groupId, updatedGroup);
+    }
+
 
     @GetMapping("/monday")
     public List<Group> getGroupsByMonday(){

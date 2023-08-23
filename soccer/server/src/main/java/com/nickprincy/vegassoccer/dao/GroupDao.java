@@ -20,4 +20,6 @@ public interface GroupDao {
     List<Group> getGroupsByFriday();
     List<Group> getGroupsBySaturday();
     List<Group> getGroupsBySunday();
+    void deleteGroup(int groupId);
+    void editGroup(int groupId, Group group);
 }
