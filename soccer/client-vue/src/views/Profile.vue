@@ -9,10 +9,7 @@
       <h1>My groups</h1>
       <my-groups-card/>
 
-      <h1>Create Group</h1>
-      <ProfileCard />
-  
-  
+
       <footer class="footer">
         <h4>&#169; Nick Ngouma</h4>
       </footer>
@@ -21,14 +18,13 @@
   </template>
   
   <script>
-import ProfileCard from '../components/ProfileCard.vue';
 import NavBar from '../components/NavBar.vue';
 import MyGroupsCard from '../components/MyGroupsCard.vue';
 
   export default {
     name: "profile",
     components:{
-      ProfileCard, NavBar, MyGroupsCard
+      NavBar, MyGroupsCard
     }
   };
   </script>

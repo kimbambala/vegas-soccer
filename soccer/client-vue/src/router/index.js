@@ -15,6 +15,7 @@ import Sunday from "../views/Sunday.vue"
 import Profile from "../views/Profile.vue"
 import Confirmation from "../views/Confirmation.vue"
 import MyGroups from "../views/MyGroups"
+import Edit from "../views/Edit.vue"
 
 Vue.use(Router)
 
@@ -116,6 +117,15 @@ const router = new Router({
       path: "/profile/:userId/:groupId",
       name: "Confirmation",
       component: Confirmation,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/groups/edit/:groupId",
+      name: "edit",
+      component: Edit,
       meta: {
         requiresAuth: true
       }

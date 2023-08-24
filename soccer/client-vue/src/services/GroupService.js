@@ -45,6 +45,10 @@ export default {
 
   editGroup(group){
     return axios.put("groups/" + group.groupId, group)
+  },
+
+  getgroupbyId(groupId){
+    return axios.get("groups/" + groupId)
   }
 
 

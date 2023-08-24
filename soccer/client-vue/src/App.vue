@@ -18,4 +18,10 @@
 
 }
 
+.footer{
+  grid-area: footer;
+  background-color: yellow;
+  text-align: center;
+}
+
 </style>
