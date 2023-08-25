@@ -28,10 +28,6 @@
                     </li>
 
                     <li class="nav-item">                   
-                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'mygroups', params:{userId:1} }" v-if="$store.state.token != ''">My groups</router-link>
-                    </li>
-
-                    <li class="nav-item">                   
                       <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
                     </li>
 

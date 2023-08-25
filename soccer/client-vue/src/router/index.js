@@ -13,8 +13,6 @@ import Friday from "../views/Friday.vue"
 import Saturday from "../views/Saturday.vue"
 import Sunday from "../views/Sunday.vue"
 import Profile from "../views/Profile.vue"
-import Confirmation from "../views/Confirmation.vue"
-import MyGroups from "../views/MyGroups"
 import Edit from "../views/Edit.vue"
 
 Vue.use(Router)
@@ -95,28 +93,11 @@ const router = new Router({
       }
     },
 
-    {
-      path: '/groups/users/:userId',
-      name: 'mygroups',
-      component: MyGroups,
-      meta: {
-        requiresAuth: true
-      }
-    },
 
     {
       path: "/profile/:userId",
       name: "profile",
       component: Profile,
-      meta: {
-        requiresAuth: true
-      }
-    },
-
-    {
-      path: "/profile/:userId/:groupId",
-      name: "Confirmation",
-      component: Confirmation,
       meta: {
         requiresAuth: true
       }
