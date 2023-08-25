@@ -4,26 +4,27 @@
             <nav-bar />
         </header>
 
-        <div class="Edit-group" >
-            <form v-on:submit.prevent="editGroup(group)">
+        <div class="create-group">
+            <h1>Add a new group</h1>
+            <form v-on:submit.prevent="onCreateGroup()">
                 <div>
-                    <label for="edit-group-name">Group Name:</label>
-                    <input type="text" id="edit-group-name" name="group-name" v-model="group.groupName" required>
+                    <label for="group-name">Group Name:</label>
+                    <input type="text" id="group-name" name="group-name" v-model="group.groupName" required>
                 </div>
 
                 <div>
-                    <label for="edit-game-day">Game Day:</label>
-                    <input type="text" id="edit-game-day" name="game-day" v-model="group.gameDay" required>
+                    <label for="game-day">Game Day:</label>
+                    <input type="text" id="game-day" name="game-day" v-model="group.gameDay" required>
                 </div>
 
                 <div>
-                    <label for="edit-start-time">Start Time:</label>
-                    <input type="text" id="edit-start-time" name="start-time" v-model="group.startTime" required>
+                    <label for="start-time">Start Time:</label>
+                    <input type="text" id="start-time" name="start-time" v-model="group.startTime" required>
                 </div>
 
                 <div>
-                    <label for="edit-game-type">Game Type:</label>
-                    <input type="text" id="edit-game-type" name="game-type" v-model="group.gameType" required>
+                    <label for="game-type">Game Type:</label>
+                    <input type="text" id="game-type" name="game-type" v-model="group.gameType" required>
                 </div>
 
                 <div>
@@ -40,10 +41,10 @@
                     <label for="additional-info">Additional Info:</label>
                     <input type="text" id="additional-info" name="additional-info" v-model="group.additionalInfo">
                 </div>
-                <button class="update-button-button" type="submit" value="Update Itinerary">Update Group</button>
+                <button type="submit" value="Create Group">Create Group </button>
 
             </form>
-        
+       
         </div>
 
 
@@ -53,10 +54,11 @@
   
   <script>
   import GroupService from "../services/GroupService";
+  import AuthService from "../services/AuthService";
   import NavBar from "../components/NavBar.vue";
 
   export default {
-    name: "edit",
+    name: "create",
     props: [
         "userId", "groupId"
     ],
@@ -65,7 +67,12 @@
     },
     data(){
         return {
- 
+            groups: [
+
+            ],
+
+            users: [],
+
             group: {
               userId: this.$store.state.user.id,
               groupName: "",
@@ -75,27 +82,27 @@
               location: "",
               address: "", 
               additionalInfo: ""
-            }
-
+            },
+           
         }
     },
     created(){  
-        const groupId = this.$route.params.groupId
-        GroupService.getgroupbyId(groupId).then((response) =>{
-            this.group = response.data;
+        const userId = this.$route.params.userId
+        GroupService.getGroupsByUserId(userId).then((response) =>{
+            this.groups = response.data;
+            console.log(response.data);
 
         })
 
-
-
-
+        AuthService.getUserByUserId(this.userId).then((response)=>{
+            this.users = response.data;
+        })
     },
     methods: {
+      onCreateGroup(){
+            GroupService.createGroup(this.group).then((response)=>{
+                console.log(response.data);
 
-      editGroup(group){
-        GroupService.editGroup(group).then(()=>{
-            
-            //const userId = response.data.userId;
                 const route = {
                     name: "profile",
                     params: {
@@ -104,11 +111,9 @@
                     }
                 };
                 this.$router.push(route)
-
-     
-        })
-      },
-
+            })
+    
+  }
 
     }           
   

@@ -14,6 +14,7 @@ import Saturday from "../views/Saturday.vue"
 import Sunday from "../views/Sunday.vue"
 import Profile from "../views/Profile.vue"
 import Edit from "../views/Edit.vue"
+import Create from "../views/Create.vue"
 
 Vue.use(Router)
 
@@ -107,6 +108,15 @@ const router = new Router({
       path: "/groups/edit/:groupId",
       name: "edit",
       component: Edit,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/groups/create/:userId",
+      name: "create",
+      component: Create,
       meta: {
         requiresAuth: true
       }

@@ -7,7 +7,18 @@
       <div class="greeting">Hello {{ $store.state.user.username }}!</div>
 
       <h1>My groups</h1>
-      <my-groups-card/>
+      <br><br>
+      <div class="add-group">
+        <button>
+          <router-link v-bind:to="{ name: 'create', params:{userId: $store.state.user.id}}"><p>Add a new group</p></router-link>
+        </button>
+      </div>
+      <br><br>
+      <div class="group-card">
+        <my-groups-card/>
+
+      </div>
+      
 
 
       <footer class="footer">
