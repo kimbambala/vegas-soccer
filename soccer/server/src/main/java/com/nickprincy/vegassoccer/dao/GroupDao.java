@@ -22,4 +22,5 @@ public interface GroupDao {
     List<Group> getGroupsBySunday();
     void deleteGroup(int groupId);
     void editGroup(int groupId, Group group);
+    List<Group> getGroupsPlayingToday();
 }

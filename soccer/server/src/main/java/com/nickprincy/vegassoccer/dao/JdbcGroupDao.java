@@ -57,6 +57,23 @@ public class JdbcGroupDao implements GroupDao{
     }
 
     @Override
+    public List<Group> getGroupsPlayingToday(){
+        List<Group> playingToday = new ArrayList<>();
+
+        String sql = "SELECT group_id, user_id, group_name, game_day, start_time, game_type, location, address, additional_info \n" +
+                "FROM groups\n" +
+                "WHERE game_day = RTRIM(to_char(current_date, 'Day'))";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
+        while(result.next()){
+            Group group = mapRowToGroup(result);
+            playingToday.add(group);
+        }
+
+        return playingToday;
+    }
+
+    @Override
     public List<Group> getGroupsByUserId(int userId) {
 
         List<Group> groupList = new ArrayList<>();

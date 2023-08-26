@@ -174,6 +174,17 @@ button{
     align-self: center;
 }
 
+button:hover{
+    background-color: #080710;
+    color: white;
+}
+
+input:hover{
+    border-color: red;
+    background-color: yellow;
+
+}
+
   
   
   </style>
