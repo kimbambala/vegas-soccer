@@ -8,7 +8,13 @@ export default {
 
   getMondayGroups(){
     return axios.get('/groups/monday/')
+  },
+
+  getGroupsPlayingToday(){
+    return axios.get('/groups/today')
   }
+
+
 
 
 

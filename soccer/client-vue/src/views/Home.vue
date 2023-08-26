@@ -9,7 +9,9 @@
     </aside>
     
     <main class="main-card">
-      <main-card/>
+
+      <playing-today />
+
     </main>
 
     <footer class="footer">
@@ -20,13 +22,13 @@
 </template>
 
 <script>
-import MainCard from "../components/MainCard.vue";
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
+import PlayingToday from "../components/PlayingToday.vue";
 export default {
   name: "home",
   components:{
-    MainCard, NavBar, SideBar
+    NavBar, SideBar, PlayingToday 
   }
 };
 </script>
