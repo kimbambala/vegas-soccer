@@ -52,6 +52,20 @@ public class GroupController{
 
     }
 
+
+
+    @GetMapping("/today")
+    public List<Group> getGroupsPlayingToday() {
+        List<Group> todayList = groupDao.getGroupsPlayingToday();
+
+        if (todayList  == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No groups");
+        }else{
+            return todayList ;
+        }
+
+    }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/users/{userId}")
     public List<Group> getGroupsByUserId(@PathVariable int userId){
