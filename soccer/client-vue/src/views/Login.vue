@@ -1,8 +1,5 @@
 <template>
   <div id="login">
-    <div class="nav-bar">
-      <nav-bar />
-    </div>
     
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
@@ -25,21 +22,16 @@
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
 
-
-
-
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-import NavBar from "../components/NavBar.vue";
+
 
 export default {
   name: "login",
-  components: {
-    NavBar
-  },
+
   data() {
     return {
       user: {
@@ -75,6 +67,12 @@ export default {
 <style scoped>
 #login{
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+
+
 
 }
 .mb-3 {

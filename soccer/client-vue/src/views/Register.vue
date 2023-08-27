@@ -1,8 +1,6 @@
 <template>
   <div id="register" class="text-center">
-    <div class="nav-bar">
-      <nav-bar />
-    </div>
+
     <form @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -30,13 +28,10 @@
 
 <script>
 import authService from '../services/AuthService';
-import NavBar from "../components/NavBar.vue";
+
 
 export default {
   name: 'register',
-  components: {
-    NavBar
-  },
   data() {
     return {
       user: {
@@ -83,6 +78,12 @@ export default {
 </script>
 
 <style scoped>
+
+#register{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }

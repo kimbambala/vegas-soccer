@@ -1,8 +1,5 @@
 <template>
     <div class="main-card">  
-        <header class= "nav-bar">
-            <nav-bar />
-        </header>
 
         <main>
             <h1>Add a new group</h1>
@@ -54,16 +51,14 @@
   <script>
   import GroupService from "../services/GroupService";
   import AuthService from "../services/AuthService";
-  import NavBar from "../components/NavBar.vue";
+
 
   export default {
     name: "create",
     props: [
         "userId", "groupId"
     ],
-    components: {
-        NavBar
-    },
+
     data(){
         return {
             groups: [

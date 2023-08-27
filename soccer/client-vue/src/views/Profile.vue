@@ -1,8 +1,5 @@
 <template>
     <div class="home">
-      <header class= "nav-bar">
-        <nav-bar />
-      </header>
 
       <div class="greeting">Hello {{ $store.state.user.username }}!</div>
 
@@ -18,24 +15,18 @@
         <my-groups-card/>
 
       </div>
-      
-
-
-      <footer class="footer">
-        <h4>&#169; Nick Ngouma</h4>
-      </footer>
+    
       
     </div>
   </template>
   
   <script>
-import NavBar from '../components/NavBar.vue';
 import MyGroupsCard from '../components/MyGroupsCard.vue';
 
   export default {
     name: "profile",
     components:{
-      NavBar, MyGroupsCard
+     MyGroupsCard
     }
   };
   </script>

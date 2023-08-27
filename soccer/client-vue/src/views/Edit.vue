@@ -1,8 +1,5 @@
 <template>
     <div class="main-card">  
-        <header class= "nav-bar">
-            <nav-bar />
-        </header>
         <main>
             <h1>Edit your group</h1>
 
@@ -58,16 +55,14 @@
   
   <script>
   import GroupService from "../services/GroupService";
-  import NavBar from "../components/NavBar.vue";
+
 
   export default {
     name: "edit",
     props: [
         "userId", "groupId"
     ],
-    components: {
-        NavBar
-    },
+
     data(){
         return {
  

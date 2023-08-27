@@ -72,7 +72,7 @@
     background-color: #FFFFFF;
     color: rgb(87, 87, 87);
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 0.7rem;
     text-align: left;
     border-radius: 0.5rem;
     border-left-style: inset;
@@ -80,8 +80,8 @@
     border-left-width: 0.5rem;
     box-shadow: 0px 5px 5px rgb(183, 176, 176); 
     display: flex;
-    height: 270px;
-    flex-direction: row;
+    height: 280px;
+    flex-direction: row; 
 
   }
   

@@ -1,8 +1,5 @@
 <template>
     <div class="home">
-      <header class= "nav-bar">
-        <nav-bar />
-      </header>
   
       <aside class="side-bar">
         <side-bar /> 
@@ -21,12 +18,11 @@
   
   <script>
   import FridayCard from "../components/FridayCard.vue";
-  import NavBar from "../components/NavBar.vue";
   import SideBar from "../components/SideBar.vue";
   export default {
     name: "fiday",
     components:{
-      FridayCard, NavBar, SideBar
+      FridayCard, SideBar
     }
   };
   </script>
