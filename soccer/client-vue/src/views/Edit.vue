@@ -11,22 +11,55 @@
                     </div>
 
                     <div>
-                        <label for="edit-game-day">Game Day:</label>
-                        <input type="text" id="edit-game-day" name="game-day" v-model="group.gameDay" required>
+                        <label for="game-day">Game Day:</label>
+                        <select id="game-day" name="game-day" v-model="group.gameDay" required>
+                            <option class="option-text" value="">--Please choose a day--</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="edit-start-time">Start Time:</label>
-                        <input type="text" id="edit-start-time" name="start-time" v-model="group.startTime" required>
+                        <label for="start-time">Start Time:</label>
+                        <select id="start-time" name="start-time" v-model="group.startTime" required>
+                            <option class="option-text" value="">--Please choose the starting time--</option>
+                            <option value="6AM">6 AM</option>
+                            <option value="7AM">7 AM</option>
+                            <option value="8AM">8 AM</option>
+                            <option value="9AM">9 AM</option>
+                            <option value="10AM">10 AM</option>
+                            <option value="11AM">11 AM</option>
+                            <option value="12PM">12 PM</option>
+                            <option value="1PM">1 PM</option>
+                            <option value="2PM">2 PM</option>
+                            <option value="3PM">3 PM</option>
+                            <option value="4PM">4 PM</option>
+                            <option value="5PM">5 PM</option>
+                            <option value="6PM">6 PM</option>
+                            <option value="7PM">7 PM</option>
+                            <option value="8PM">8 PM</option>
+                            <option value="9PM">9 PM</option>
+                            <option value="10PM">10 PM</option>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="edit-game-type">Game Type:</label>
-                        <input type="text" id="edit-game-type" name="game-type" v-model="group.gameType" required>
+                        <label for="game-type">Game Type:</label>
+                        <select id="game-day" name="game-type" v-model="group.gameType" required>
+                            <option class="option-text" value="">--Please choose a game type--</option>
+                            <option value="Indoor">Indoor</option>
+                            <option value="Outdoor">Outdoor</option>
+
+                        </select>
                     </div>
 
                     <div>
-                        <label for="location">Location:</label>
+                        <label for="location">Location Name:</label>
                         <input type="text" id="location" name="location" v-model="group.location" required>
                     </div>
 
@@ -46,6 +79,11 @@
             </div>
 
         </main>
+
+        <footer class="card-footer">
+
+        </footer>
+
         
 
 
@@ -122,7 +160,9 @@ main{
     flex-direction: column;
     align-items: center;
 
+
   }
+  
 
 .form-card{
     display: flex;
@@ -133,13 +173,13 @@ main{
 input{
     display: block;
     height: 40px;
-    width: 800px;
+    width: 700px;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 3px;
     padding: 0 10px;
     margin-bottom: 8px;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 input:hover{
@@ -179,6 +219,20 @@ button{
 button:hover{
     background-color: #080710;
     color: white;
+}
+
+.card-footer{
+    height: 50px;
+}
+
+select{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.07);
+    width: 700px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 3px;
+
 }
 
   

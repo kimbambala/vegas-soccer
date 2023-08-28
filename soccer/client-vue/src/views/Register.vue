@@ -19,7 +19,7 @@
         <input class="form-control mx-auto w-auto" type="password" id="confirmPassword" placeholder="Confirm Password" v-model="user.confirmPassword" required />
       </div>
       <button class="btn btn-primary" type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p><router-link :to="{ name: 'login' }">Already have an account? <span class="login">Log in.</span></router-link></p>
     </form>
 
 
@@ -89,5 +89,19 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.login:hover{
+  color: #CC9933;
+}
+
+.login{
+  color: #CC9933;
+  font-weight: bold;
 }
 </style>

@@ -54,10 +54,35 @@
   <style>
   
     .navbar-brand{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin-left: 10px;
+    color: white;
     }
     .nav-bar{
-      background-color: red;
+      background-color: #CC9933
+    }
+
+    .navbar-toggler{
+      margin-right: 10px;
+    }
+
+    .navbar-toggler:hover{
+      color: black;
+      font-weight: bolder;
+    }
+
+    .offcanvas{
+      background-color: #CC9933;
+    }
+
+    .offcanvas-body{
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .nav-link:hover{
+      background-color: white;
+
     }
 
 

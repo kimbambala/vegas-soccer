@@ -24,9 +24,14 @@
                 <td class="playing-location-address">{{ group.address }}</td>
                 <td class="additional-info">{{ group.additionalInfo }}</td> 
                 <td> 
-                 <router-link v-bind:to="{ name: 'edit', params:{groupId: group.groupId}}"><p>Edit Group</p></router-link>
+                  <button class="edit">
+                    <div class="edit-text">
+                      <router-link v-bind:to="{ name: 'edit', params:{groupId: group.groupId}}"><p>Edit Group</p></router-link>
+                    </div>
+                  </button>
+                 
                 </td>
-                <td class="delete-itinerary"> <button type="submit" value="Delete" v-on:click="deleteGroup(group.groupId)">Delete</button></td>             
+                <td class="delete-itinerary"> <button class="delete" type="submit" value="Delete" v-on:click="deleteGroup(group.groupId)">Delete</button></td>             
             </tr>
         </tbody>
       </table>
@@ -99,6 +104,39 @@
 
   td{
     text-align: center;
+  }
+
+  button{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+  }
+
+  .delete{
+    background-color: red;
+    color: white
+  }
+
+  .edit{
+    background-color: yellow;
+    color: white;
+
+  }
+
+  .edit-text{
+    margin-top: 15px;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  a:link, a:visited{
+    color: black;
+    text-decoration: none
   }
   
   

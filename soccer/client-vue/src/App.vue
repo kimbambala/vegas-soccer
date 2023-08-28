@@ -36,16 +36,18 @@ export default {
 #nav{
   grid-area: nav;
 
+
 }
 
 .content{
   grid-area: content;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .footer{
-  background-color: yellow;
-  margin-top: 50px;
+  background-color: #CC9933;
+  color: white;
+  margin-top: 100px;
   height: 50px;
   display: flex;
   align-items: center;

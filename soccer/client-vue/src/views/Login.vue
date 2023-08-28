@@ -19,7 +19,7 @@
       </div>
       <button class="btn btn-primary" type="submit">Sign in</button>
       <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link :to="{ name: 'register' }">Need an account? <span class="sign-up">Sign up.</span></router-link></p>
     </form>
 
   </div>
@@ -71,6 +71,7 @@ export default {
   justify-content: center;
   align-content: center;
   height: 100vh;
+  color: black;
 
 
 
@@ -81,5 +82,25 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+p{
+  color: black
+}
+
+
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.sign-up:hover{
+  color: #CC9933;
+}
+
+.sign-up{
+  color: #CC9933;
+  font-weight: bold;
+}
+
 
 </style>
