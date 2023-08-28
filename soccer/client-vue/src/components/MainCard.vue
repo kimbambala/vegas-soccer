@@ -16,12 +16,13 @@
                           <div class="text"><span class="data-name">Additional info: </span>{{ group.additionalInfo }}</div> 
                         </div>
                         <div class="card-image">
-                          <img src="../assets/images/dim-hou-cMYFJ95TY_E-unsplash.jpg" alt="">
+                          <img src="../assets/images/jonathan-petersson-ARU18GpF6QQ-unsplash.jpg" alt="">
                         </div>
-                        
+
                       </div>
                   </div>    
               </div>
+              
           </div>
       </div>
     </div>

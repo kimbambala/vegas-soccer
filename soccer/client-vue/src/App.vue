@@ -16,7 +16,7 @@
     </div>
 
     <footer class="footer">
-      <v-footer >&#169; Nick Ngouma</v-footer>
+      <footer >&#169; Nick Ngouma</footer>
     </footer>
   </div>
 </template>

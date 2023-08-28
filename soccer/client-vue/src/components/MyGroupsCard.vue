@@ -96,6 +96,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-align: left;
   }
   .thead{
     background-color: rgb(32, 32, 31);

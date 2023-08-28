@@ -57,6 +57,8 @@ import MyGroupsCard from '../components/MyGroupsCard.vue';
   .home{
     margin-left: 20px;
     margin-right: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   a{
@@ -78,7 +80,7 @@ import MyGroupsCard from '../components/MyGroupsCard.vue';
   }
 
   .card-footer{
-    height: 50px;
+    height: 400px;
 }
 
 img{

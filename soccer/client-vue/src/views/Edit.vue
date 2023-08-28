@@ -182,7 +182,7 @@ input{
     font-weight: 400;
 }
 
-input:hover{
+input:hover, select:hover{
     border-color: red;
     background-color: yellow;
 

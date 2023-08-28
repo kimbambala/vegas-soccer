@@ -31,6 +31,10 @@
       </div>
       <tuesday-card/>
     </main>
+    <footer class="card-footer">
+        <img src="../assets/images/vegaspic2.jpeg" alt="">
+        <div class="centered">Las Vegas Pickup Soccer</div>
+    </footer>
     
   </div>
 </template>
@@ -108,6 +112,30 @@ border: none;
 
 button:hover{
 background-color:  rgb(211, 231, 239);
+}
+
+.card-footer{
+    height: 400px;
+    margin-left: 150px;
+    margin-right: 150px;
+    position: relative;
+}
+
+img{
+  margin-top: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.centered {
+  position: absolute;
+  top: 40%;
+  text-align: center;
+  padding-left: 200px;
+  font-size: 60px;
+  font-weight: 700;
+  color: white;
+
 }
 
 
