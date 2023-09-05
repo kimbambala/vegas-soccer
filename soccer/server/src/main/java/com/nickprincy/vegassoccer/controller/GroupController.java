@@ -99,6 +99,7 @@ public class GroupController{
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{groupId}")
     public void deleteGroup(@PathVariable int groupId){
+
         groupDao.deleteGroup(groupId);
     }
 
