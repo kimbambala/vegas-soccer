@@ -1,5 +1,5 @@
 <template>
-    <div class="main-card">
+    <div class="today-card">
       <h1 class="main-text">Playing Today</h1>
       <div class="main-content">
           <div v-for="group in groups" v-bind:key="group.groupId">
@@ -8,6 +8,8 @@
                       <div class="group-card">
                          <div class="info-data">
                           <div class="group-name">{{ group.groupName }}</div>
+                          <br>
+                          <br>
                           <div class="playing-day"> <span class="data-name">Day</span>: {{ group.gameDay }}</div>
                           <div class="playing-time"> <span class="data-name">Start Time</span>:  {{ group.startTime }}</div>
                           <div class="playing-type"> <span class="data-name">Game type</span>: {{ group.gameType }} </div>

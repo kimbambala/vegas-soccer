@@ -3,7 +3,7 @@
         <nav class="navbar ">
             <div class="container-fluid">
               
-              <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">Las Vegas Pickup Soccer Board</router-link>
+              <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">Las Vegas Pickup Soccer</router-link>
               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -24,7 +24,7 @@
                     </li>
 
                     <li class="nav-item">                   
-                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'profile', params:{userId: this.$store.state.user.id}}" v-if="$store.state.token != ''">My profile</router-link>
+                      <router-link class="nav-link active" aria-current="page" v-bind:to="{ name: 'profile', params:{userId: this.$store.state.user.id}}" v-if="$store.state.token != ''">My Groups</router-link>
                     </li>
 
                     <li class="nav-item">                   
@@ -54,16 +54,25 @@
   <style>
   
     .navbar-brand{
-    font-size: 1.7rem;
-    margin-left: 10px;
-    color: white;
+    font-size: 2.5rem;
+    margin-left: 160px;
+    color: black;
+    font-weight: 800;
     }
     .nav-bar{
       background-color: #CC9933
     }
 
     .navbar-toggler{
-      margin-right: 10px;
+      margin-right: 160px;
+      width: 100px;
+      color: black;
+      border-width: 4px;
+      border-color: black;
+    }
+
+    .navbar-toggler-icon{
+      width: 40px;
     }
 
     .navbar-toggler:hover{
@@ -84,6 +93,11 @@
       background-color: white;
 
     }
+
+    a:visited {
+  text-decoration: none;
+}
+
 
 
   </style>

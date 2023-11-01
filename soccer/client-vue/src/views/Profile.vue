@@ -55,8 +55,8 @@ import MyGroupsCard from '../components/MyGroupsCard.vue';
   }
 
   .home{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 170px;
+    margin-right: 170px;
     display: flex;
     flex-direction: column;
   }

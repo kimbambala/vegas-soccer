@@ -105,6 +105,11 @@
         height: 100%;     
 }
 
+  .data-name{
+    color: black;
+    font-weight: bold;
+  }
+
   .group-name{
     font-size: 1.7rem;
     text-align: center;

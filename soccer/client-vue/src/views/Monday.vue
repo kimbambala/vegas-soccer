@@ -56,8 +56,8 @@
   grid-area: main-card;
   background-color: rgb(211, 231, 239);
   box-shadow: inset 0px 5px 5px 0px rgb(175, 166, 166);
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 170px;
+  margin-right: 170px;
   padding-bottom: 20px;
 }
 
@@ -117,8 +117,8 @@ button:hover{
 
 .card-footer{
     height: 400px;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 170px;
+    margin-right: 170px;
     position: relative;
 }
 
