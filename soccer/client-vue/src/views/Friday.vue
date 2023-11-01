@@ -1,6 +1,6 @@
 <template>
   <div class="friday-page">
-    
+    <friday-card />
     <main class="friday-card">
       <div class="playing-days">
         <button class="monday">
@@ -29,7 +29,7 @@
           <router-link v-bind:to="{ name: 'sunday' }"><p>Sunday</p></router-link>
         </button>
       </div>
-      <friday-card />
+      
     </main>
 
     <footer class="card-footer">

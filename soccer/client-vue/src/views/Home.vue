@@ -2,6 +2,7 @@
   <div class="home">
 
     <main class="main-card">
+      <playing-today />
       <div class="playing-days">
         <button class="monday">
           <router-link v-bind:to="{ name: 'monday' }"><p>Monday</p></router-link>
@@ -29,7 +30,7 @@
           <router-link v-bind:to="{ name: 'sunday' }"><p>Sunday</p></router-link>
         </button>
       </div>
-      <playing-today />
+      
 
     </main>
     <footer class="card-footer">
