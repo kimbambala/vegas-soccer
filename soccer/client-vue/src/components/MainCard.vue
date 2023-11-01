@@ -8,12 +8,12 @@
                       <div class="group-card">
                         <div class="info-data">
                           <div class="group-name">Group Name: {{ group.groupName }}</div>
-                          <div class="playing-day"> <span class="data-name">Day:</span> {{ group.gameDay }}</div>
-                          <div class="playing-time"> <span class="data-name">Start Time: </span> {{ group.startTime }}</div>
-                          <div class="playing-type"> <span class="data-name">Game type: </span>{{ group.gameType }} </div>
-                          <div class="playing-location"> <span class="data-name">Location: </span>{{ group.location}}</div>
-                          <div class="playing-location-address"> <span class="data-name">Adress: </span>{{ group.address }}</div>
-                          <div class="text"><span class="data-name">Additional info: </span>{{ group.additionalInfo }}</div> 
+                          <div class="playing-day"> <span class="data-name">Day</span>: {{ group.gameDay }}</div>
+                          <div class="playing-time"> <span class="data-name">Start Time</span>:  {{ group.startTime }}</div>
+                          <div class="playing-type"> <span class="data-name">Game type</span>: {{ group.gameType }} </div>
+                          <div class="playing-location"> <span class="data-name">Location</span>: {{ group.location}}</div>
+                          <div class="playing-location-address"> <span class="data-name">Adress</span>: {{ group.address }}</div>
+                          <div class="text"><span class="data-name">Additional info</span>: {{ group.additionalInfo }}</div> 
                         </div>
                         <div class="card-image">
                           <img src="../assets/images/jonathan-petersson-ARU18GpF6QQ-unsplash.jpg" alt="">
@@ -107,10 +107,14 @@
         
       }
 
-      .data-name{
-        color: black;
-        font-weight: bold;
-      }
+    .data-name{
+      color: black;
+      font-weight: bold;
+    }
+
+    .group-name {
+      font-size: 3rem;
+    }
   
 
 

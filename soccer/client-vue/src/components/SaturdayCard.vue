@@ -1,6 +1,6 @@
 <template>
     <div class="saturday-card">
-        <h1>Playing On Saturdays</h1>
+        <h1 class="main-text">Playing On Saturdays</h1>
         <div class="main-content">
         <div v-for="group in groups" v-bind:key="group.groupId">
             
@@ -8,13 +8,13 @@
                     <div class="group-card-grid">
                         <div class="group-card">
                             <div class="info-data">
-                                <div class="group-name">Group Name: {{ group.groupName }}</div>
-                                <div class="playing-day">Day: {{ group.gameDay }}</div>
-                                <div class="playing-time">Start Time: {{ group.startTime }}</div>
-                                <div class="playing-type">Game type: {{ group.gameType }} </div>
-                                <div class="playing-location">Location: {{ group.location}}</div>
-                                <div class="playing-location-address">Adress: {{ group.address }}</div>
-                                <div class="text">Additional info: {{ group.additionalInfo }}</div> 
+                                <div class="group-name">{{ group.groupName }}</div>
+                                <div class="playing-day"> <span class="data-name">Day</span>: {{ group.gameDay }}</div>
+                                <div class="playing-time"> <span class="data-name">Start Time</span>:  {{ group.startTime }}</div>
+                                <div class="playing-type"> <span class="data-name">Game type</span>: {{ group.gameType }} </div>
+                                <div class="playing-location"> <span class="data-name">Location</span>: {{ group.location}}</div>
+                                <div class="playing-location-address"> <span class="data-name">Adress</span>: {{ group.address }}</div>
+                                <div class="text"><span class="data-name">Additional info</span>: {{ group.additionalInfo }}</div> 
                             </div>
                             <div class="card-image">
                                 <img src="../assets/images/joshua-hoehne-Rrcyop6jvDA-unsplash.jpg" alt="">
@@ -87,10 +87,8 @@
     flex-direction: row; 
   }
   
-  .group-card .group-name {
-    font-size: 1.5;
+  .group-card {
     text-align: left;
-    font-weight: 600;
     color: black;
   }
 
@@ -109,6 +107,19 @@
         height: 100%;
         
 }
+
+  .data-name{
+    color: black;
+    font-weight: bold;
+  }
   
-  
+  .group-name{
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .main-text{
+    text-align: center;
+  }
   </style>
