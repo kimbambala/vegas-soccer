@@ -19,9 +19,6 @@ This is the main file that contains both the back-end and front-end parts of the
 ###### client-vue:
 This is the front-end part of the project which is built using Vue.js
 
-###### client:
-This is the command line version of the front-end part of the application. It is built with Java.
-
 ###### database:
 This is where the data is stored. I am using PostgreSQL for my database.
 
